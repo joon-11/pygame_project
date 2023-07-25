@@ -11,13 +11,9 @@ class CircularVision:
 
     def draw_mask(self):
         mask = pygame.Surface(self.screen.get_size(), pygame.SRCALPHA)
-        mask.fill((0, 0, 0, 0))  # Fill the mask with transparent color
-
-        # Clear the circle area
-        pygame.draw.circle(mask, (0, 0, 0, 255), self.player_pos, self.radius)
-
-        # Fill the left part of the mask with black
-        left_rect = pygame.Rect(0, 0, self.player_pos[0] - self.radius, self.screen.get_height())
-        pygame.draw.rect(mask, (0, 0, 0, 255), left_rect)
-
+        mask.fill((0, 0, 0, 255))  # Fill the mask with black
+        pygame.draw.circle(mask, (0, 0, 0, 0), self.player_pos, self.radius)  # Clear the circle area
         self.screen.blit(mask, (0, 0))
+
+    def set_radius(self, radius):
+        self.radius = radius
